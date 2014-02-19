@@ -1,0 +1,52 @@
+
+<configuration>
+    <contextName>TCS</contextName>
+    <jmxConfigurator />
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-6([%thread]) %-6level %-80(%logger#%method) %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>D:\log\tomcat7\tcs.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>D:\log\tomcat7\tcs.%d{yyyy-MM-dd}.log</fileNamePattern>
+
+            <!-- keep 30 days' worth of history -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-6([%thread]) %-6level %-80(%logger#%method) %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="file" />
+        <appender-ref ref="console" />
+    </root>
+
+    <logger name="root" level="warn"/>
+
+    <logger name="com.toshiba.cloud.lifelog" level="info" />
+
+
+    <logger name="org.jboss.logging" level="warn"/>
+    <logger name="net.sf.ehcache" level="warn"/>
+    <logger name="org.hibernate" level="warn"/>
+    <logger name="java.sql" level="warn"/>
+    <logger name="com.gargoylesoftware.htmlunit" level="warn"/>
+    <logger name="httpclient" level="warn"/>
+    <logger name="org.apache.http" level="warn"/>
+    <logger name="org.springframework" level="warn"/>
+    <logger name="org.apache.commons.httpclient" level="warn"/>
+    <logger name="org.apache.commons.beanutils" level="warn"/>
+    <logger name="org.nuiton.util" level="warn"/>
+
+    <logger name="org.springframework" level="warn"/>
+
+</configuration>
+

@@ -1,0 +1,46 @@
+<!--
+  #%L
+  Cloud TV :: Backend
+  $Id: persistence.xml 93103 2013-12-09 16:39:25Z ymartel $
+  $HeadURL: https://svn.tsbctv.com/Iskandar/tc-back/trunk/tc-back-core/src/main/resources/META-INF/persistence.xml $
+  %%
+  Copyright (C) 2012 - 2013 TOSHIBA Corporation
+  %%
+  This software is copyright 2012 - 2013 TOSHIBA Corporation - All rights reserved. The source code of this
+  software is confidential. Any partial or total disclosure or use, other than those expressly and
+  previously authorised in writing by the legal representatives of TOSHIBA Corporation are strictly
+  forbidden. Use of this software, in object code, or use of all or part of its source code, is
+  subject to the execution of a software licence agreement by which TOSHIBA Corporation grants you
+  a right of use, according to the terms and conditions set forth strictly and restrictively in such
+  agreement. Unless a valid licence agreement exists, you are not allowed to use the software,
+  in object code, or all or part of its source code, for any purpose whatsoever.
+  #L%
+  -->
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+    version="1.0">
+
+    <persistence-unit name="tcsPersistenceUnit" transaction-type="RESOURCE_LOCAL">
+        <!--<provider>org.hibernate.ejb.HibernatePersistence</provider>-->
+
+      <class>fsoft.fsu11.bu11.tcs.core.entities.LogEntity</class>
+
+        <properties>
+
+            <!--
+                properties given here are common to all environment
+                others properties you expected to find here are
+                in tcs-structure.properties because those
+                properties may vary depending on the environment
+            -->
+
+            <property name="hibernate.connection.autoReconnect" value="true" />
+            <property name="current_session_context_class" value="thread" />
+
+            <!-- makes table and column name generation in database follow better conventions -->
+            <property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy" />
+
+        </properties>
+    </persistence-unit>
+</persistence>
