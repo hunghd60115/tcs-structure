@@ -20,6 +20,14 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee           
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <!-- Config for Log back -->
+    <context-param>
+        <param-name>logbackConfigLocation</param-name>
+        <param-value>D:\\config\logback-tcs.xml</param-value>
+    </context-param>
+    <listener>
+        <listener-class>fsoft.fsu11.bu11.tcs.commons.utils.LogbackConfigListener</listener-class>
+    </listener>
 
     <!-- Reads request input using UTF-8 encoding -->
     <filter>
