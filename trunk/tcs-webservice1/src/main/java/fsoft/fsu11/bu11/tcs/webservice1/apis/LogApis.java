@@ -1,5 +1,7 @@
 package fsoft.fsu11.bu11.tcs.webservice1.apis;
 
+import com.google.common.cache.Cache;
+import com.google.common.cache.CacheBuilder;
 import fsoft.fsu11.bu11.tcs.commons.dtos.HealthCheckResponseBase;
 import fsoft.fsu11.bu11.tcs.commons.dtos.Log;
 import fsoft.fsu11.bu11.tcs.commons.dtos.Logs;
@@ -18,7 +20,10 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created with IntelliJ IDEA.
@@ -41,9 +46,24 @@ public class LogApis extends AbstractTcsBackendService {
 
     private Logger LOG = LoggerFactory.getLogger(LogApis.class);
 
+    private Cache<String, String> a;
+
     @Override
     protected Logger getLog() {
         return LOG;
+    }
+
+    @ResponseBody
+    @RequestMapping(method = RequestMethod.GET)
+    public String testSession(HttpServletRequest requestHeader){
+        if(a == null){
+            a = CacheBuilder.newBuilder().expireAfterWrite(20, TimeUnit.SECONDS).build();
+        }
+        if(a.getIfPresent("s") == null){
+            a.put("s", "s");
+        }
+        HealthCheckResponseBase a = (HealthCheckResponseBase) requestHeader.getSession().getAttribute("s");
+        return requestHeader.getSession().isNew() + "";
     }
 
     @ResponseBody

@@ -50,8 +50,8 @@
         <property name="entityManagerFactory" ref="tcsLocalEntityManagerFactoryBean" />
     </bean>
 
-    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
-    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+    <!--<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>-->
 
     <!-- Session-->
     <!--<bean id="session" class="fsoft.fsu11.bu11.tcs.commons.conf.TcsStructureSession" scope="session" >-->
